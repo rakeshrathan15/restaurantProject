@@ -1,6 +1,6 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { UserregisterService } from '../userregister.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 
 @Component({
@@ -11,11 +11,17 @@ import { Observable } from 'rxjs';
 export class TemplateDrivenComponentComponent {
         name:string = 'Angular Demo';
 
+        subject = new Subject<string>();
+
         @Output()
         userNameEmitter : EventEmitter<string>=new EventEmitter();
 
         
         constructor(private userRegisterService:UserregisterService){
+
+          this.subject.subscribe(data => {
+            console.log(" from subscribe data value"+data);
+          })
 
         }
         password:string='';
@@ -30,6 +36,10 @@ export class TemplateDrivenComponentComponent {
 
 
         register(form:any): void{
+
+          this.subject.next("testing subject in angular"+this.userDetails.name);
+
+          this.subject.next("22222222222222");
 
           this.userNameEmitter.emit(this.userDetails.name);
   
@@ -52,4 +62,7 @@ export class TemplateDrivenComponentComponent {
     );
           console.log("succesfull register"+JSON.stringify(this.userDetails)+"response"+response);
         }
+
+
+        
 }

@@ -1,0 +1,19 @@
+<div class="container-fluid">
+
+    <div class="form-group">
+         <label for="restaurantName" >Restaurant Name</label>
+        <input type="text"  id="restaurantName" name="restaurantName" class="form-control"
+
+         [(ngModel)]="restaurant.name"/>
+
+    </div>
+
+    {{restaurant.name}}
+
+    
+
+   <button type="submit" class="btn-btn-primary"
+   (click)="addRestaurant()" > Add Restaurant</button>
+
+   <app-address></app-address>
+</div>    

@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appMask]'
@@ -10,19 +10,29 @@ export class MaskDirective {
 
     maskData:string='**********';
 
-  constructor() {
+    originalData: string ='';
+
+
+  constructor(private eleRef: ElementRef) {
     console.log('From MaskDirective  ');
    }
 
    @HostListener("mouseenter")
    mouseEnter(){
-    console.log(" Enter into the mouse enter method "+this.appMask);
+    console.log(" Enter into the mouse enter method ");
+    this.appMask=this.originalData;
+    this.eleRef.nativeElement.value=this.appMask;
+
 
   }
 
   @HostListener("mouseleave")
   mouseOut(){
-    console.log(" enter into the mouseLeave method "+this.appMask);
+     this.originalData=this.appMask;
+     this.appMask=this.maskData;
+    console.log(" enter into the mouseLeave method original method "+this.originalData);
+    console.log(" enter into the mouseLeave method  app mask"+this.appMask);
+    this.eleRef.nativeElement.value=this.appMask;
   }
 
   @HostListener("mouseover")

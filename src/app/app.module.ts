@@ -9,13 +9,21 @@ import { provideHttpClient,withInterceptorsFromDi } from '@angular/common/http';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { MaskDirective } from './mask.directive';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AddressComponent } from './address/address.component';
+import { UserComponent } from './user/user.component';
+import { AddRestaurantsComponent } from './add-restaurants/add-restaurants.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateDrivenComponentComponent,
     ForgotpasswordComponent,
-    MaskDirective
+    MaskDirective,
+    AddressComponent,
+    UserComponent,
+    AddRestaurantsComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserregisterService } from './userregister.service';
 
 
 @Component({
@@ -10,8 +11,15 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'firstangulardemo';
   fullNameFromChild:string='';
-  constructor(private router:Router){
-
+  constructor(private router:Router,
+    private userregisterService:UserregisterService
+  ){
+  this.userregisterService.userNameBehaviourSubject.subscribe(
+    data =>{
+      this.fullNameFromChild=data;
+      console.log( " from App component Service");
+    }
+  )
   }
   register(){
     console.log(' from register');

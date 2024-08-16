@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,7 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class UserregisterService {
 
-  constructor(private http:HttpClient) { }
+   userNameBehaviourSubject =  new BehaviorSubject<string>('Neoteric');
+
+
+   emitName(name:any):void{
+     this.userNameBehaviourSubject.next(name);
+   }
+
+  constructor(private http:HttpClient) {
+    console.log(" from constructor in UserRegisterService");
+    
+   }
 
 
   learnObservable(): Observable<string>{
