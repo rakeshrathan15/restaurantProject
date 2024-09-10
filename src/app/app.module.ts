@@ -13,6 +13,8 @@ import { AddressComponent } from './address/address.component';
 import { UserComponent } from './user/user.component';
 import { AddRestaurantsComponent } from './add-restaurants/add-restaurants.component';
 import { RatingComponent } from './rating/rating.component';
+import { CreateaccountComponent } from './createaccount/createaccount.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { RatingComponent } from './rating/rating.component';
     AddressComponent,
     UserComponent,
     AddRestaurantsComponent,
-    RatingComponent
+    RatingComponent,
+    CreateaccountComponent,
+    
   ],
   imports: [
     BrowserModule,
