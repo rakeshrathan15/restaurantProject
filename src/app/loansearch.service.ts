@@ -1,26 +1,27 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class LoansearchService {
 
-  constructor(private http:HttpClient ) {
-   }
+  constructor(private httpClient:HttpClient ) {
+  }
 
-   createAccount(account:any):Observable<any>{
-    console.log('in service'+JSON.stringify(account));
+  searchAccount(accountnumber:any):Observable<any>{
+    const httpHeaders = {
 
-    const httpHeaders={
       headers:new HttpHeaders({
+        'accountinput':accountnumber,
         'Content-Type':'application/json',
       'Accept':'application/json'
-
       })
     };
-
-    return this.http.post("http://localhost:8080/api/searchAccount/Datajpa",account,httpHeaders);
-   }
+    return this.httpClient.get("http://localhost:8080/api/searchAccount/criteria",httpHeaders);
+  }
 }
+
